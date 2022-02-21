@@ -1,0 +1,423 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://os/OS.gd" type="Script" id=1]
+[ext_resource path="res://os/window/Window.tscn" type="PackedScene" id=2]
+[ext_resource path="res://os/gfx/background.png" type="Texture" id=3]
+[ext_resource path="res://os/asteroids/AsteroidsWindow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://os/Segoe UI Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://os/goodbad/GBBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://os/music/GJ3 (Kick).mp3" type="AudioStream" id=7]
+[ext_resource path="res://os/music/GJ3 (Snare).mp3" type="AudioStream" id=8]
+[ext_resource path="res://os/Clock.gd" type="Script" id=9]
+[ext_resource path="res://os/housing/HousingWindow.tscn" type="PackedScene" id=10]
+[ext_resource path="res://os/Focused.gd" type="Script" id=11]
+[ext_resource path="res://os/stocks/StocksWindow.tscn" type="PackedScene" id=12]
+[ext_resource path="res://os/music/GJ3 (Body).mp3" type="AudioStream" id=13]
+[ext_resource path="res://os/ControlPanelButtons.gd" type="Script" id=14]
+[ext_resource path="res://os/Settings.gd" type="Script" id=15]
+[ext_resource path="res://os/gfx/settings.png" type="Texture" id=16]
+[ext_resource path="res://os/sfx/Selection.mp3" type="AudioStream" id=17]
+[ext_resource path="res://os/sfx/Begin.mp3" type="AudioStream" id=18]
+[ext_resource path="res://os/music/GJ3 (Hats).mp3" type="AudioStream" id=19]
+[ext_resource path="res://os/music/GJ3 (Choir).mp3" type="AudioStream" id=20]
+[ext_resource path="res://os/music/GJ3 (Earthbound Voice Samples).mp3" type="AudioStream" id=21]
+[ext_resource path="res://end/End.tscn" type="PackedScene" id=22]
+[ext_resource path="res://os/Fade.tscn" type="PackedScene" id=23]
+[ext_resource path="res://os/NonPaused.gd" type="Script" id=24]
+[ext_resource path="res://os/BG Change.gd" type="Script" id=25]
+[ext_resource path="res://os/ui_font.tres" type="DynamicFont" id=26]
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 22
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 36
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 26
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 37
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 20
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 20
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 14
+extra_spacing_top = -3
+font_data = ExtResource( 5 )
+
+[node name="OS" type="Node2D"]
+script = ExtResource( 1 )
+asteroids_scene = ExtResource( 4 )
+asteroids_position = Vector2( 400, 400 )
+gbbar_scene = ExtResource( 6 )
+gbbar_position = Vector2( 1200, 20 )
+housing_scene = ExtResource( 10 )
+stocks_scene = ExtResource( 12 )
+end_scene = ExtResource( 22 )
+
+[node name="Background" type="Sprite" parent="."]
+z_index = -10
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Clock" type="Label" parent="Background"]
+margin_left = 4.0
+margin_top = -6.0
+margin_right = 129.0
+margin_bottom = 39.0
+custom_colors/font_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "12:34"
+align = 1
+valign = 1
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Focused" type="Node2D" parent="."]
+script = ExtResource( 11 )
+
+[node name="ControlPanel" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_left = 788.0
+margin_top = 228.0
+margin_right = 1110.0
+margin_bottom = 535.0
+rect_pivot_offset = Vector2( 161, 153.5 )
+window_name = "Control Panel"
+window_auto_size = false
+
+[node name="Label3" type="Label" parent="ControlPanel"]
+margin_left = 17.0
+margin_top = 252.0
+margin_right = 305.0
+margin_bottom = 282.0
+custom_colors/font_color = Color( 0.588235, 0.588235, 0.588235, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "[c]2022, Voice Box Games"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="ControlPanel"]
+margin_left = 18.0
+margin_top = 48.0
+margin_right = 306.0
+margin_bottom = 78.0
+custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "VoiceOS Control Panel"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="ControlPanel"]
+margin_left = 21.0
+margin_top = 87.0
+margin_right = 303.0
+margin_bottom = 181.0
+custom_fonts/font = SubResource( 6 )
+text = "Play!"
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+credits_window_path = NodePath("../../Credits")
+settings_window_path = NodePath("../../Settings")
+
+[node name="CreditsButton" type="Button" parent="ControlPanel/PlayButton"]
+margin_top = 105.0
+margin_right = 112.0
+margin_bottom = 156.0
+custom_fonts/font = SubResource( 5 )
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="ControlPanel/PlayButton"]
+margin_left = 121.0
+margin_top = 105.0
+margin_right = 233.0
+margin_bottom = 156.0
+custom_fonts/font = SubResource( 5 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsButton" type="Button" parent="ControlPanel/PlayButton"]
+margin_left = 242.0
+margin_top = 105.0
+margin_right = 282.0
+margin_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 5 )
+icon = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_left = 163.0
+margin_top = 14.0
+margin_right = 414.0
+margin_bottom = 1074.0
+rect_pivot_offset = Vector2( 125.5, 530 )
+window_name = "Credits"
+window_auto_size = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
+margin_left = 14.0
+margin_top = 44.0
+margin_right = 239.0
+margin_bottom = 1187.0
+custom_colors/default_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+custom_fonts/bold_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center][wave][b]VoiceOS[/b][/wave]
+
+a game by
+VOICE BOX GAMES
+
+programming and art
+ANGUS GOUCHER
+
+music and sfx
+BRAEDEN TREFETHEN
+
+design
+JACOB NELAN
+
+special thanks to
+JACOB W.M. TOLCHIN
+AIDAN McNEAL
+ALEXIS SCHAFER
+JAMES McKIBBIN
+GRACE ALLARD
+
+made with
+GODOT
+PHOTOSHOP
+ASEPRITE
+FL STUDIO
+SFORZANDO
+GATORADE
+
+a submission for
+MINI JAM 100
+
+thanks for playing!
+
+"
+text = "VoiceOS
+
+a game by
+VOICE BOX GAMES
+
+programming and art
+ANGUS GOUCHER
+
+music and sfx
+BRAEDEN TREFETHEN
+
+design
+JACOB NELAN
+
+special thanks to
+JACOB W.M. TOLCHIN
+AIDAN McNEAL
+ALEXIS SCHAFER
+JAMES McKIBBIN
+GRACE ALLARD
+
+made with
+GODOT
+PHOTOSHOP
+ASEPRITE
+FL STUDIO
+SFORZANDO
+GATORADE
+
+a submission for
+MINI JAM 100
+
+thanks for playing!
+
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_left = 1280.0
+margin_top = 114.0
+margin_right = 1452.0
+margin_bottom = 288.0
+rect_pivot_offset = Vector2( 86, 68 )
+window_name = "Settings"
+window_auto_size = false
+
+[node name="Settings" type="Control" parent="Settings"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 15 )
+
+[node name="SFX" type="Label" parent="Settings/Settings"]
+margin_left = 22.0
+margin_top = 81.0
+margin_right = 78.0
+margin_bottom = 109.0
+custom_colors/font_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "SFX"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXCheckButton" type="CheckButton" parent="Settings/Settings/SFX"]
+margin_left = 66.0
+margin_top = -3.0
+margin_right = 142.0
+margin_bottom = 37.0
+focus_mode = 0
+shortcut_in_tooltip = false
+pressed = true
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="Label" parent="Settings/Settings"]
+margin_left = 21.0
+margin_top = 47.0
+margin_right = 77.0
+margin_bottom = 75.0
+custom_colors/font_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Music"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicCheckButton" type="CheckButton" parent="Settings/Settings/Music"]
+margin_left = 66.0
+margin_top = -3.0
+margin_right = 142.0
+margin_bottom = 37.0
+focus_mode = 0
+shortcut_in_tooltip = false
+pressed = true
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG Change" type="Label" parent="Settings"]
+margin_left = 65.0
+margin_top = 128.0
+margin_right = 110.0
+margin_bottom = 156.0
+custom_colors/font_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+custom_fonts/font = ExtResource( 26 )
+text = "BG 1"
+align = 1
+valign = 1
+script = ExtResource( 25 )
+
+[node name="LeftButton" type="Button" parent="Settings/BG Change"]
+margin_left = -27.0
+margin_top = 2.0
+margin_right = -5.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 10 )
+text = "<"
+
+[node name="LeftButton2" type="Button" parent="Settings/BG Change"]
+margin_left = 49.0
+margin_top = 2.0
+margin_right = 71.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 10 )
+text = ">"
+
+[node name="Pluck" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+bus = "SFX"
+
+[node name="Login" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = -8.116
+
+[node name="AudioLayers" type="Node" parent="."]
+
+[node name="MusicBody" type="AudioStreamPlayer" parent="AudioLayers"]
+stream = ExtResource( 13 )
+bus = "Music"
+
+[node name="Kick" type="AudioStreamPlayer" parent="AudioLayers"]
+stream = ExtResource( 7 )
+bus = "Music"
+
+[node name="Snare" type="AudioStreamPlayer" parent="AudioLayers"]
+stream = ExtResource( 8 )
+bus = "Music"
+
+[node name="Hats" type="AudioStreamPlayer" parent="AudioLayers"]
+stream = ExtResource( 19 )
+bus = "Music"
+
+[node name="EB" type="AudioStreamPlayer" parent="AudioLayers"]
+stream = ExtResource( 21 )
+bus = "Music"
+
+[node name="Choir" type="AudioStreamPlayer" parent="AudioLayers"]
+stream = ExtResource( 20 )
+bus = "Music"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Fade" parent="." instance=ExtResource( 23 )]
+pause_mode = 2
+z_index = 4096
+z_as_relative = false
+show_on_ready = false
+
+[node name="NonPaused" type="Node2D" parent="."]
+pause_mode = 2
+script = ExtResource( 24 )
+fade_path = NodePath("../Fade")
+
+[connection signal="pressed" from="ControlPanel/PlayButton" to="ControlPanel/PlayButton" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="ControlPanel/PlayButton/CreditsButton" to="ControlPanel/PlayButton" method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="ControlPanel/PlayButton/QuitButton" to="ControlPanel/PlayButton" method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="ControlPanel/PlayButton/SettingsButton" to="ControlPanel/PlayButton" method="_on_SettingsButton_pressed"]
+[connection signal="toggled" from="Settings/Settings/SFX/SFXCheckButton" to="Settings/Settings" method="_on_SFXCheckButton_toggled"]
+[connection signal="toggled" from="Settings/Settings/Music/MusicCheckButton" to="Settings/Settings" method="_on_MusicCheckButton_toggled"]
+[connection signal="pressed" from="Settings/BG Change/LeftButton" to="Settings/BG Change" method="_on_LeftButton_pressed"]
+[connection signal="pressed" from="Settings/BG Change/LeftButton2" to="Settings/BG Change" method="_on_LeftButton2_pressed"]

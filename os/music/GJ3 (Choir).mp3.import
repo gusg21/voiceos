@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/GJ3 (Choir).mp3-98cf921e3ea14ca947ab81cb87312227.mp3str"
+
+[deps]
+
+source_file="res://os/music/GJ3 (Choir).mp3"
+dest_files=[ "res://.import/GJ3 (Choir).mp3-98cf921e3ea14ca947ab81cb87312227.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

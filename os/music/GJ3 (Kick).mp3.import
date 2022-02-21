@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/GJ3 (Kick).mp3-44b4853e3952b376b68a0714d305f42f.mp3str"
+
+[deps]
+
+source_file="res://os/music/GJ3 (Kick).mp3"
+dest_files=[ "res://.import/GJ3 (Kick).mp3-44b4853e3952b376b68a0714d305f42f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Gus Goucher - Selected Things + Automobiles, 2018-2019 - 26 Voop-Voop.mp3-b2ec80da30401e02fb871683af47544f.mp3str"
+
+[deps]
+
+source_file="res://end/Gus Goucher - Selected Things + Automobiles, 2018-2019 - 26 Voop-Voop.mp3"
+dest_files=[ "res://.import/Gus Goucher - Selected Things + Automobiles, 2018-2019 - 26 Voop-Voop.mp3-b2ec80da30401e02fb871683af47544f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

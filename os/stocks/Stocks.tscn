@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://os/stocks/bg.png" type="Texture" id=1]
+[ext_resource path="res://os/stocks/Stock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://os/stocks/Stocks.gd" type="Script" id=3]
+
+[node name="Stocks" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Bg" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="MONG" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4, 44 )
+
+[node name="LWIZ" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4, 184 )
+wildness = 0.5
+num_stocks = 23
+max_value = 200
+
+[node name="WOB" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4, 324 )
+wildness = 3.0
+num_stocks = 7
+max_value = 20
+
+[node name="VCBX" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4, 464 )
+wildness = 2.0
+num_stocks = 3
+max_value = 35

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Opening Swell (Short).mp3-614e4ea84ac77adfe32bdc90abe67cdf.mp3str"
+
+[deps]
+
+source_file="res://boot/Opening Swell (Short).mp3"
+dest_files=[ "res://.import/Opening Swell (Short).mp3-614e4ea84ac77adfe32bdc90abe67cdf.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

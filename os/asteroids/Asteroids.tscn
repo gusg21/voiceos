@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://os/asteroids/AsteroidsContainer.tscn" type="PackedScene" id=1]
+
+[node name="Asteroids" type="Viewport"]
+size = Vector2( 600, 600 )
+render_target_v_flip = true
+
+[node name="AsteroidsContainer" parent="." instance=ExtResource( 1 )]

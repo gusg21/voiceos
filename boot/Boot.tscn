@@ -1,0 +1,188 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://boot/loading.png" type="Texture" id=1]
+[ext_resource path="res://boot/loadingbarbg.png" type="Texture" id=2]
+[ext_resource path="res://boot/loadingbar.png" type="Texture" id=3]
+[ext_resource path="res://boot/Boot.gd" type="Script" id=4]
+[ext_resource path="res://os/Fade.tscn" type="PackedScene" id=5]
+[ext_resource path="res://boot/WOGDisplay.gd" type="Script" id=6]
+[ext_resource path="res://os/window/Window.tscn" type="PackedScene" id=7]
+[ext_resource path="res://os/Segoe UI Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://boot/PopupOk1.gd" type="Script" id=9]
+[ext_resource path="res://boot/PopupYesButton.gd" type="Script" id=10]
+[ext_resource path="res://os/OS.tscn" type="PackedScene" id=11]
+[ext_resource path="res://boot/Opening Swell (Short).mp3" type="AudioStream" id=12]
+[ext_resource path="res://os/sfx/Selection.mp3" type="AudioStream" id=13]
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 36
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 33
+font_data = ExtResource( 8 )
+
+[node name="Boot" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="BG" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Loading" type="TextureProgress" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 384.5
+margin_top = 554.0
+margin_right = 1535.5
+margin_bottom = 655.0
+step = 0.0
+value = 1.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InchTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="UpperDisplay" type="RichTextLabel" parent="."]
+margin_left = 385.0
+margin_top = -599.0
+margin_right = 1531.0
+margin_bottom = 183.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.352941 )
+custom_constants/shadow_offset_y = 5
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WOGDisplay" type="RichTextLabel" parent="."]
+margin_left = 387.0
+margin_top = 664.0
+margin_right = 1533.0
+margin_bottom = 1093.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.352941 )
+custom_constants/shadow_offset_y = 5
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+other_display_path = NodePath("../UpperDisplay")
+
+[node name="UpdateTimer" type="Timer" parent="WOGDisplay"]
+autostart = true
+
+[node name="Popup1" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_left = 127.0
+margin_top = 267.0
+margin_right = 543.0
+margin_bottom = 436.0
+rect_pivot_offset = Vector2( 208, 84.5 )
+window_name = "Alert"
+window_auto_size = false
+
+[node name="Button2" type="Button" parent="Popup1"]
+margin_left = 138.0
+margin_top = 113.0
+margin_right = 277.0
+margin_bottom = 150.0
+focus_mode = 0
+custom_fonts/font = SubResource( 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "OK"
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+next_window_path = NodePath("../../Popup2")
+
+[node name="Pluck" type="AudioStreamPlayer" parent="Popup1/Button2"]
+stream = ExtResource( 13 )
+bus = "SFX"
+
+[node name="Label2" type="Label" parent="Popup1"]
+margin_left = 15.0
+margin_top = 45.0
+margin_right = 400.0
+margin_bottom = 105.0
+custom_colors/font_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Continue to OS?"
+align = 1
+valign = 1
+
+[node name="Popup2" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_left = 421.0
+margin_top = 365.0
+margin_right = 837.0
+margin_bottom = 534.0
+rect_pivot_offset = Vector2( 208, 84.5 )
+window_name = "Alert"
+window_auto_size = false
+
+[node name="Button2" type="Button" parent="Popup2"]
+margin_left = 138.0
+margin_top = 113.0
+margin_right = 277.0
+margin_bottom = 150.0
+focus_mode = 0
+custom_fonts/font = SubResource( 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "Yes"
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+os_scene = ExtResource( 11 )
+window1_path = NodePath("..")
+window2_path = NodePath("../../Popup1")
+
+[node name="Label2" type="Label" parent="Popup2"]
+margin_left = 15.0
+margin_top = 45.0
+margin_right = 400.0
+margin_bottom = 105.0
+custom_colors/font_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Are you sure?"
+align = 1
+valign = 1
+
+[node name="Fade" parent="." instance=ExtResource( 5 )]
+
+[node name="BootUpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+bus = "SFX"
+
+[node name="Pluck" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+bus = "SFX"
+
+[connection signal="timeout" from="InchTimer" to="." method="_on_InchTimer_timeout"]
+[connection signal="timeout" from="WOGDisplay/UpdateTimer" to="WOGDisplay" method="_on_UpdateTimer_timeout"]
+[connection signal="pressed" from="Popup1/Button2" to="Popup1/Button2" method="_on_Button2_pressed"]
+[connection signal="pressed" from="Popup2/Button2" to="Popup2/Button2" method="_on_Button2_pressed"]
+[connection signal="fade_complete" from="Fade" to="." method="_on_Fade_fade_complete"]

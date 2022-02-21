@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/GJ3 (Hats).mp3-ee4911360d86f3f17dda38535182e794.mp3str"
+
+[deps]
+
+source_file="res://os/music/GJ3 (Hats).mp3"
+dest_files=[ "res://.import/GJ3 (Hats).mp3-ee4911360d86f3f17dda38535182e794.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

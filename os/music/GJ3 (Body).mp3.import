@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/GJ3 (Body).mp3-d713b2b12c11782716f7889891f10738.mp3str"
+
+[deps]
+
+source_file="res://os/music/GJ3 (Body).mp3"
+dest_files=[ "res://.import/GJ3 (Body).mp3-d713b2b12c11782716f7889891f10738.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

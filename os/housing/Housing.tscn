@@ -1,0 +1,130 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://os/housing/gfx/housingbg.png" type="Texture" id=1]
+[ext_resource path="res://os/housing/Block.tscn" type="PackedScene" id=2]
+[ext_resource path="res://os/housing/Housing.gd" type="Script" id=3]
+[ext_resource path="res://os/housing/gfx/m5x7.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://os/housing/gfx/money.png" type="Texture" id=7]
+[ext_resource path="res://os/housing/gfx/abouttocrash.png" type="Texture" id=8]
+[ext_resource path="res://os/housing/AboutToCrash.gd" type="Script" id=9]
+[ext_resource path="res://os/housing/sfx/Alarm (Better).mp3" type="AudioStream" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[node name="Housing" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="BG" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Blocks" type="Node2D" parent="."]
+
+[node name="Block" parent="Blocks" instance=ExtResource( 2 )]
+
+[node name="Block2" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 25, 0 )
+
+[node name="Block3" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 25, 25 )
+
+[node name="Block4" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 0, 25 )
+
+[node name="Block5" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 50, 25 )
+
+[node name="Block6" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 75, 25 )
+
+[node name="Block7" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 75, 50 )
+
+[node name="Block8" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 50, 50 )
+
+[node name="Block9" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 25, 50 )
+
+[node name="Block10" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 50, 75 )
+
+[node name="Block11" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 75, 75 )
+
+[node name="Block12" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 100, 75 )
+
+[node name="Block13" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 125, 75 )
+
+[node name="Block14" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 100, 100 )
+
+[node name="Block15" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 75, 100 )
+
+[node name="Block16" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 50, 100 )
+
+[node name="Block17" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 25, 100 )
+
+[node name="Block18" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 0, 100 )
+
+[node name="Block19" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 0, 125 )
+
+[node name="Block20" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 25, 125 )
+
+[node name="Block21" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 50, 125 )
+
+[node name="RefreshTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Money" type="Sprite" parent="."]
+position = Vector2( 141, 9 )
+z_index = 1000
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="Money"]
+margin_left = -96.0
+margin_top = -7.0
+margin_right = -9.0
+margin_bottom = 26.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "$123/s"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DisplayUpdate" type="Timer" parent="."]
+autostart = true
+
+[node name="Abouttocrash" type="Sprite" parent="."]
+visible = false
+position = Vector2( 78, 74 )
+z_index = 1000
+texture = ExtResource( 8 )
+script = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="Abouttocrash"]
+wait_time = 0.5
+autostart = true
+
+[node name="Alarm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -6.653
+
+[connection signal="timeout" from="RefreshTimer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="DisplayUpdate" to="." method="_on_DisplayUpdate_timeout"]
+[connection signal="timeout" from="Abouttocrash/Timer" to="Abouttocrash" method="_on_Timer_timeout"]

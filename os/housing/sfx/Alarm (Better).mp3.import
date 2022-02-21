@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Alarm (Better).mp3-0bbc1ec2136732cdc793fa0e10d9c8e9.mp3str"
+
+[deps]
+
+source_file="res://os/housing/sfx/Alarm (Better).mp3"
+dest_files=[ "res://.import/Alarm (Better).mp3-0bbc1ec2136732cdc793fa0e10d9c8e9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

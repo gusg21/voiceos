@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://end/end.png" type="Texture" id=1]
+[ext_resource path="res://os/Segoe UI Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://end/Credits.gd" type="Script" id=3]
+[ext_resource path="res://end/Wobble1.png" type="Texture" id=4]
+[ext_resource path="res://end/WOBBLE.gd" type="Script" id=5]
+[ext_resource path="res://end/Gus Goucher - Selected Things + Automobiles, 2018-2019 - 26 Voop-Voop.mp3" type="AudioStream" id=6]
+[ext_resource path="res://end/Music.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=2]
+size = 65
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 2 )
+
+[node name="End" type="Node2D"]
+pause_mode = 2
+
+[node name="End" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Credits" type="RichTextLabel" parent="."]
+margin_left = 1325.0
+margin_top = 800.0
+margin_right = 1879.0
+margin_bottom = 2793.0
+custom_fonts/bold_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center][wave][b]VoiceOS[/b][/wave]
+
+a game by
+VOICE BOX GAMES
+
+programming and art
+ANGUS GOUCHER
+
+music and sfx
+BRAEDEN TREFETHEN
+
+design
+JACOB NELAN
+
+special thanks to
+JACOB W.M. TOLCHIN
+AIDAN McNEAL
+ALEXIS SCHAFER
+JAMES McKIBBIN
+GRACE ALLARD
+
+made with
+GODOT
+PHOTOSHOP
+ASEPRITE
+FL STUDIO
+SFORZANDO
+GATORADE
+
+a submission for
+MINI JAM 100
+
+thanks for playing!
+
+"
+text = "VoiceOS
+
+a game by
+VOICE BOX GAMES
+
+programming and art
+ANGUS GOUCHER
+
+music and sfx
+BRAEDEN TREFETHEN
+
+design
+JACOB NELAN
+
+special thanks to
+JACOB W.M. TOLCHIN
+AIDAN McNEAL
+ALEXIS SCHAFER
+JAMES McKIBBIN
+GRACE ALLARD
+
+made with
+GODOT
+PHOTOSHOP
+ASEPRITE
+FL STUDIO
+SFORZANDO
+GATORADE
+
+a submission for
+MINI JAM 100
+
+thanks for playing!
+
+"
+fit_content_height = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WOBBLE" type="Sprite" parent="."]
+position = Vector2( 2467, 368 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 4 )
+flip_h = true
+script = ExtResource( 5 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "Music"
+script = ExtResource( 7 )
+
+[node name="Tween" type="Tween" parent="Music"]
